@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-10">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>TEMPERATURE CONVERTER</title>
+</head>
+
+<body>
+
+    <style>
+
+    body {
+        width: 100%;
+        height: 100vh;
+        background-color: #030d18;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+       
+    .container{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+        width: 450px;
+        height: auto;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .result{
+        height: 70px;
+        border-bottom: 2px solid black;
+        text-align: center;
+        margin: 20px;
+    }
+
+    .input{
+        border-bottom: 2px solid #030d18;
+        padding: 10px;
+    }
+
+    .degree_field{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .type{
+        display: flex;
+        flex-direction: column;
+        width: 45%;
+    }
+
+    label{
+        color: blue;
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+
+    input, select{
+        margin-bottom: 5px;
+        padding: 10px;
+        border: none;
+        border-bottom: 2px solid black;
+        outline: none;
+        background: transparent;
+    }
+
+    option{
+        background: white;
+        color: black;
+    }
+
+    #convert-btn{
+        cursor: pointer;
+        text-transform: uppercase;
+        margin-top: 10px;
+        letter-spacing: 1px;
+        font-weight: bold;
+        padding: 10px 80px;
+        color: white;
+        background: linear-gradient(to top, rgb(4, 154, 4), rgb(10, 180, 10));
+        border-radius: 5px;
+        outline: none;
+        border: none;
+
+    }
+
+    #convert-btn:hover{
+        background: linear-gradient(to top, rgb(18, 215, 18), rgb(25, 194, 25));
+    }
+
+    </style>
+
+    <div class="container" id="container">
+        <div class="title" id="title">
+            <h2 class="title1">Temperature Converter</h2>
+        </div>
+
+        <div class="result">
+            <span class="result_">Result</span>
+            <h2 class="fahrenheit" id="result_"></h2>
+        </div>
+
+        <div class="degrees_field">
+            <div class="type">
+            <label for="degrees">Degrees (in C)</label>
+            <input type="number" name="degrees" id="degrees">
+        </div>
+
+        <div class="temp-field">
+            <label for="temp-type">Convert To</label>
+            <select name="temperatures" id="temp-type">
+                <option value="fahren">fahrenheit</option>
+                <option value="kelvin">kelvin</option>
+            </select>
+        </div>
+
+        <button class="convert-btn" id="convert-btn">Convert</button>
+    </div>
+    </div>
+
+    <script>
+        const outputfield = document.querySelector("#result_");
+        const degreefield = document.querySelector("#degrees");
+        const temptype = document.querySelector("#temp-type");
+        const convertbtn = document.querySelector("#convert-btn");
+
+        window.addEventListener("load", () =>{
+            degrees.value = "";
+            outputfield.innerHTML = "";
+        })
+
+        convertbtn.addEventListener("click", (c) => {
+            c.preventDefault();
+            convertTo();
+        })
+
+        function convertTo(){
+            let input_value = degrees.value;
+
+            if (temptype.value === "fahren") {
+                const celTofah = (9/5)*(input_value) + 32;
+                outputfield.innerHTML = `${celTofah.toFixed(2)} &deg;F`;
+            }
+            if (temptype.value === "kelvin") {
+                const celTokel = (1)*(input_value) + 273;
+                outputfield.innerHTML = `${celTokel.toFixed(2)} K`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
